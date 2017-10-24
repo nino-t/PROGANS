@@ -1,0 +1,84 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteRule ^beranda/?$ index.php?page=home [L]
+RewriteRule ^about/?$ index.php?page=about [L]
+RewriteRule ^forum/?$ index.php?page=forum [L]
+RewriteRule ^artikel/?$ index.php?page=artikel [L]
+RewriteRule ^masuk/?$ login.php [L]
+RewriteRule ^daftar/?$ register.php [L]
+RewriteRule ^keluar/?$ logout.php [L]
+RewriteRule ^faq/?$ index.php?page=faq [L]
+RewriteRule ^404notfound/?$ 404notfound.php [L]
+
+RewriteRule ^search/?([a-zA-Z]+)/?([a-zA-Z0-9]+)/?$ index.php?page=search&cat=$1&keyword=$2 [L]
+
+RewriteRule ^artikel/?([0-9]+)/?$ index.php?page=artikel&hal=$1 [L]
+RewriteRule ^artikel/c/?([0-9]+)/?$ index.php?page=artikel_kategori&kategori=$1 [L]
+RewriteRule ^artikel/c/?([0-9]+)/?([0-9]+)/?$ index.php?page=artikel_kategori&kategori=$1&hal=$2 [L]
+RewriteRule ^artikel/k/?([0-9]+)/?$ index.php?page=artikel_daerah&kota=$1 [L]
+RewriteRule ^artikel/k/?([0-9]+)/?([0-9]+)/?$ index.php?page=artikel_daerah&kota=$1&hal=$2 [L]
+
+RewriteRule ^artikel/p/?([0-9]+)/?$ index.php?page=artikel_daerah&provinsi=$1 [L]
+RewriteRule ^artikel/p/?([0-9]+)/?([0-9]+)/?$ index.php?page=artikel_daerah&provinsi=$1&hal=$2 [L]
+
+RewriteRule ^artikel/delete/?([0-9])/?$ index.php?page=artikel&act=delete&id=$1 [L]
+RewriteRule ^artikel/edit/?([0-9]+)/?$ index.php?page=artikel_baru&act=edit&id=$1 [L]
+RewriteRule ^artikel/baru?$ index.php?page=artikel_baru [L]
+RewriteRule ^artikel/baca/?([0-9]+)/?([a-zA-Z\-]+)/?$ index.php?page=artikel_baca&id=$1&slug=$2 [L]
+
+RewriteRule ^profil/?([a-zA-Z0-9]+)/?$ index.php?page=profil&username=$1 [L]
+RewriteRule ^me/?$ index.php?page=myprofile [L]
+
+RewriteRule ^forum/?([0-9]+)/?$ index.php?page=forum&hal=$1 [L]
+RewriteRule ^forum/c/?([0-9]+)/?$ index.php?page=forum_kategori&kategori=$1 [L]
+RewriteRule ^forum/c/?([0-9]+)/?([0-9]+)/?$ index.php?page=forum_kategori&kategori=$1&hal=$2 [L]
+RewriteRule ^forum/k/?([0-9]+)/?$ index.php?page=forum_daerah&kota=$1 [L]
+RewriteRule ^forum/k/?([0-9]+)/?([0-9]+)/?$ index.php?page=forum_daerah&kota=$1&hal=$2 [L]
+RewriteRule ^forum/p/?([0-9]+)/?$ index.php?page=forum_daerah&provinsi=$1 [L]
+RewriteRule ^forum/p/?([0-9]+)/?([0-9]+)/?$ index.php?page=forum_daerah&provinsi=$1&hal=$2 [L]
+
+RewriteRule ^forum/topik/baru/?$ index.php?page=topik_baru [L]
+RewriteRule ^forum/topik/edit/?([0-9]+)/?$ index.php?page=topik_baru&act=edit&id=$1 [L]
+RewriteRule ^forum/topik/delete/?([0-9]+)/?$ index.php?page=topik_baru&act=delete&id=$1 [L]
+RewriteRule ^forum/topik/baca/?([0-9]+)/?([a-zA-Z\-]+)/?$ index.php?page=topik_baca&thread_id=$1&slug=$2 [L]
+RewriteRule ^forum/topik/baca/?([0-9]+)/?([a-zA-Z\-]+)/?([0-9]+)/?$ index.php?page=topik_baca&thread_id=$1&slug=$2&hal=$3 [L]
+
+RewriteRule ^forum/topik/balas/?([0-9]+)/?$ index.php?page=topik_balasan&id=$1 [L]
+RewriteRule ^forum/topik/balas/edit/?([0-9]+)/?$ index.php?page=topik_balasan&act=edit&id=$1 [L]
+RewriteRule ^forum/topik/balas/delete/?([0-9]+)/?$ index.php?page=topik_baca&act=delete&id=$1 [L]
+RewriteRule ^forum/topik/quote/?([0-9]+)/?$ index.php?page=topik_balasan&quote_id=$1 [L]
+
+RewriteRule ^administrator/beranda?$ administrator/index.php?page=home [L]
+RewriteRule ^administrator/kategori?$ administrator/index.php?page=kategori [L]
+RewriteRule ^administrator/kategori/?([0-9]+)/?$ administrator/index.php?page=kategori&hal=$1 [L]
+RewriteRule ^administrator/kategori/baru?$ administrator/index.php?page=kategori_baru [L]
+RewriteRule ^administrator/kategori/delete/?([0-9]+)/?$ administrator/index.php?page=kategori&act=delete&id=$1 [L]
+RewriteRule ^administrator/kategori/edit/?([0-9]+)/?$ administrator/index.php?page=kategori_baru&act=edit&id=$1 [L]
+
+RewriteRule ^administrator/artikel?$ administrator/index.php?page=artikel [L]
+RewriteRule ^administrator/artikel/?([0-9]+)/?$ administrator/index.php?page=artikel&hal=$1 [L]
+RewriteRule ^administrator/artikel/baru?$ administrator/index.php?page=artikel_baru [L]
+RewriteRule ^administrator/artikel/delete/?([0-9]+)/?$ administrator/index.php?page=artikel&act=delete&id=$1 [L]
+RewriteRule ^administrator/artikel/edit/?([0-9]+)/?$ administrator/index.php?page=artikel_baru&act=edit&id=$1 [L]
+
+RewriteRule ^administrator/topik?$ administrator/index.php?page=topik [L]
+RewriteRule ^administrator/topik/?([0-9]+)/?$ administrator/index.php?page=topik&hal=$1 [L]
+RewriteRule ^administrator/topik/baru?$ administrator/index.php?page=topik_baru [L]
+RewriteRule ^administrator/topik/delete/?([0-9]+)/?$ administrator/index.php?page=topik&act=delete&id=$1 [L]
+RewriteRule ^administrator/topik/edit/?([0-9]+)/?$ administrator/index.php?page=topik_baru&act=edit&id=$1 [L]
+
+RewriteRule ^administrator/pengguna?$ administrator/index.php?page=pengguna [L]
+RewriteRule ^administrator/pengguna/?([0-9]+)/?$ administrator/index.php?page=pengguna&hal=$1 [L]
+RewriteRule ^administrator/pengguna/baru?$ administrator/index.php?page=pengguna_baru [L]
+RewriteRule ^administrator/pengguna/delete/?([0-9]+)/?$ administrator/index.php?page=pengguna&act=delete&id=$1 [L]
+RewriteRule ^administrator/pengguna/edit/?([0-9]+)/?$ administrator/index.php?page=pengguna_baru&act=edit&id=$1 [L]
+
+RewriteRule ^administrator/komentar?$ administrator/index.php?page=komentar [L]
+RewriteRule ^administrator/komentar/?([0-9]+)/?$ administrator/index.php?page=komentar&hal=$1 [L]
+RewriteRule ^administrator/komentar/baru?$ administrator/index.php?page=komentar_baru [L]
+RewriteRule ^administrator/komentar/delete/?([0-9]+)/?$ administrator/index.php?page=komentar&act=delete&id=$1 [L]
+RewriteRule ^administrator/komentar/edit/?([0-9]+)/?$ administrator/index.php?page=komentar_baru&act=edit&id=$1 [L]
+
+Options All -Indexes
+</IfModule>
